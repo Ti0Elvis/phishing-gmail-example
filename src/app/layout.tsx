@@ -23,7 +23,9 @@ export default function Layout({ children }: Readonly<Props>) {
           defaultTheme="light"
           enableSystem
           disableTransitionOnChange>
-          {children}
+          <main className="w-full h-screen grid place-items-center">
+            {children}
+          </main>
         </ThemeProvider>
       </body>
     </html>

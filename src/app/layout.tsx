@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
+import { ThemeProvider } from "@/providers/theme-provider";
 
 const roboto = Roboto({ weight: ["500", "600", "700"], subsets: ["latin"] });
 
@@ -15,8 +16,16 @@ interface Props {
 
 export default function Layout({ children }: Readonly<Props>) {
   return (
-    <html lang="en">
-      <body className={roboto.className}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={roboto.className}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
